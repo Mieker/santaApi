@@ -26,6 +26,11 @@ public class UserController {
         this.userService = userService;
     }
     
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello man!";
+    }
+    
     @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUsers();
