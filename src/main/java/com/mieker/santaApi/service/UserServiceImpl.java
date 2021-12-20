@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.mieker.santaApi.exception.GiftError;
+import com.mieker.santaApi.exception.GiftException;
 import com.mieker.santaApi.exception.UserError;
 import com.mieker.santaApi.exception.UserException;
 import com.mieker.santaApi.model.Gift;
@@ -100,9 +102,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Gift reserveGift(String userId, String giftId) {
-        // TODO Auto-generated method stub
-        return null;
+    public User reserveGift(String userId, String giftId) {
+        User user = getUserById(userId);
+        Gift gift = getGiftById(giftId);
+        user.addGiftToGiftsToGiveList(gift);
+        
+        return userRepository.save(user);
     }
 
     @Override
@@ -111,4 +116,12 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    private Gift getGiftById(String giftId) {
+        Gift gift = giftRepository.findByGiftId(giftId);
+        if (gift == null) {
+            throw new GiftException(GiftError.GIFT_NOT_EXIST);
+        } else {
+            return gift;
+        }
+    }
 }

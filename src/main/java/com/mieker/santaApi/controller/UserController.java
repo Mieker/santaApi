@@ -61,13 +61,18 @@ public class UserController {
         return userService.putUser(userId, user);
     }
     
-    @PostMapping("/{userId}/{giftId}")
+    @PostMapping("/{userId}/wish/{giftId}")
     public User addWantedGiftToUser(@PathVariable String userId, @PathVariable String giftId) {
         return userService.addWantedGift(userId, giftId);
     }
     
-    @DeleteMapping("/{userId}/{giftId}")
+    @DeleteMapping("/{userId}/wish/{giftId}")
     public User removeWantedGiftFromUser(@PathVariable String userId, @PathVariable String giftId) {
         return userService.removeFromWantedGift(userId, giftId);
+    }
+    
+    @PostMapping("/{userId}/gives/{giftId}")
+    public User addGiftToReservedGiftsList(@PathVariable String userId, @PathVariable String giftId) {
+        return userService.reserveGift(userId, giftId);
     }
 }

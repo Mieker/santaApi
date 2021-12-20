@@ -23,7 +23,7 @@ public interface UserService {
 
     User removeFromWantedGift(String userId, String giftId);
 
-    Gift reserveGift(String userId, String giftId);
+    User reserveGift(String userId, String giftId);
 
     void removeFromReservedGift(String userId, String giftId);
 
