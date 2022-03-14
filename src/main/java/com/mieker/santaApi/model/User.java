@@ -1,17 +1,17 @@
 package com.mieker.santaApi.model;
 
-import java.util.*;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import com.mieker.santaApi.exception.UserError;
 import com.mieker.santaApi.exception.UserException;
-
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Document
 @Getter
