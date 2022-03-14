@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
     public User putUser(String userId, User user) {
 
         User userFromDb = userRepository.findByUserId(userId);
-        userFromDb.setNickname(user.getNickname());
+        userFromDb.setUsername(user.getUsername());
         userFromDb.setEmail(user.getEmail());
         userFromDb.setPassword(user.getPassword());
         userFromDb.setWantedGifts(user.getWantedGifts());
@@ -69,8 +69,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public User patchUser(String userId, User user) {
         User userFromDb = userRepository.findByUserId(userId);
-        if (!user.getNickname().isBlank() && user.getNickname() != null) {
-            userFromDb.setNickname(user.getNickname());
+        if (!user.getUsername().isBlank() && user.getUsername() != null) {
+            userFromDb.setUsername(user.getUsername());
         }
         if (!user.getEmail().isBlank() && user.getEmail() != null) {
             userFromDb.setEmail(user.getEmail());
