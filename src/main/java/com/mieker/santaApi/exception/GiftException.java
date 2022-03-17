@@ -2,7 +2,7 @@ package com.mieker.santaApi.exception;
 
 public class GiftException extends RuntimeException {
 
-    private GiftError giftError;
+    private final GiftError giftError;
 
     public GiftException(GiftError giftError) {
         this.giftError = giftError;
