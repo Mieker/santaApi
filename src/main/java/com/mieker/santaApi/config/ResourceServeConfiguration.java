@@ -15,8 +15,10 @@ public class ResourceServeConfiguration extends ResourceServerConfigurerAdapter 
     public void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/users/registration").permitAll()
+                .antMatchers("/user/*").permitAll()
+                .antMatchers("/user/*/*").permitAll()
                 .antMatchers("/users/*/activate").permitAll()
+                .antMatchers("/*").permitAll()
                 .anyRequest().authenticated();
     }
 }

@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Role implements GrantedAuthority {
 
     public enum ERole {
-        ROLE_STUDENT,
+        ROLE_USER,
         ROLE_ADMIN
     }
 
