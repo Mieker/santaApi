@@ -6,7 +6,7 @@ public enum UserError {
     GIFT_NOT_EXIST("That gift doesn't exist"),
     USER_NOT_EXIST("User doesn't exist");
 
-    private String message;
+    private final String message;
 
     UserError(String message) {
         this.message = message;

@@ -27,4 +27,7 @@ public interface UserService {
 
     void removeFromReservedGift(String userId, String giftId);
 
+    void giveUserRole(String userId);
+
+    void giveAdminRole(String userId);
 }

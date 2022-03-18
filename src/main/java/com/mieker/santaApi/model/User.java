@@ -1,29 +1,33 @@
 package com.mieker.santaApi.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import com.mieker.santaApi.exception.UserError;
 import com.mieker.santaApi.exception.UserException;
-
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Document
 @Getter
 @Setter
-public class User {
+public class User implements UserDetails {
 
     @Id
     private String userId;
-    private String nickname;
+    private String username;
     private String email;
     private String password;
     private List<Gift> wantedGifts = new ArrayList<Gift>();
     private List<Gift> giftsToGive = new ArrayList<Gift>();
+
+    private Set<Role> authorities = new HashSet<>();
+    private boolean enabled;
 
     public void addGiftToWantedGiftList(Gift gift) {
         if (wantedGifts.size() > 0) {
@@ -54,4 +58,20 @@ public class User {
     public void addGiftToGiftsToGiveList(Gift gift) {
         giftsToGive.add(gift);
     }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
 }
