@@ -28,17 +28,18 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RolesAllowed({"ROLE_USER"})
     @GetMapping("/hello")
     public String hello() {
         return "Hello man!";
     }
 
+    @RolesAllowed({"ROLE_ADMIN"})
     @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
+    @RolesAllowed({"ROLE_USER"})        // user can only register new users
     @PostMapping
     public User registerUser(@RequestBody User user) {
         return userService.registerUser(user);

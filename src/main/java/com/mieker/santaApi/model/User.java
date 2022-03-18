@@ -26,7 +26,6 @@ public class User implements UserDetails {
     private List<Gift> wantedGifts = new ArrayList<Gift>();
     private List<Gift> giftsToGive = new ArrayList<Gift>();
 
-    //@ManyToMany
     private Set<Role> authorities = new HashSet<>();
     private boolean enabled;
 

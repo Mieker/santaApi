@@ -3,7 +3,6 @@ package com.mieker.santaApi.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,7 +28,7 @@ public class AuthServerConfiguration extends AuthorizationServerConfigurerAdapte
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("kurs")
+                .withClient("kurs")     // below: credentials needed to get token for client
                 .authorizedGrantTypes("password")
                 .scopes("read", "write")
                 .autoApprove(true)
