@@ -11,7 +11,7 @@ import com.mieker.santaApi.service.UserService;
 import javax.annotation.security.RolesAllowed;
 
 @RestController
-@CrossOrigin(origins = "https://santa-api-app.herokuapp.com/user/hello", maxAge = 3600)
+@CrossOrigin(origins = "localhost:3000/user/hello", maxAge = 3600)
 @RequestMapping("/user")
 public class UserController {
 
